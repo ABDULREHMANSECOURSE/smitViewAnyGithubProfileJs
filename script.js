@@ -38,11 +38,13 @@
       if(repos){
         userProfile.innerHTML += `<label for="repos">Repos : ${repos}</label>`;
       }
-      userProfile.innerHTML += `<div class="followersFollowing">
+      if(followers || following){
+        userProfile.innerHTML += `<div class="followersFollowing">
             <label for="followers">Followers : ${followers}</label>
             <label for="following">Following : ${following}</label>
-        </div>`
-      
+        </div>`;
+      }
+
       if(link){
         userProfile.innerHTML += `<label for="githubLink">GITHUB LINK : <a href="${link}">${link}</a></label>`;
       }
@@ -53,6 +55,9 @@
       if(bio){
         userProfile.innerHTML += `<label for="bio">BIO : <p>${bio}</p></label>`;
       }
+      if (!username) {
+      userProfile.innerHTML = `<p>Please enter correct a username</p>`;
+    }
     })
   }
   searchButton.addEventListener('click', () => {
